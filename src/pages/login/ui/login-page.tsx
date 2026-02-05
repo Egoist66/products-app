@@ -5,7 +5,7 @@
 // - переход на /products по кнопке.
 
 import {PasswordInput} from '@mantine/core';
-import {LoginButton} from '../../../features/auth/loginButton/ui/LoginButton';
+import {LoginButton} from '../../../features/auth/login-button/ui/login-button';
 
 export default function LoginPage() {
     return (

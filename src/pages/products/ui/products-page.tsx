@@ -6,8 +6,8 @@
 // - поиск
 // - открытие модального окна добавления/редактирования.
 
-import { LogoutButton } from '../../../features/auth/logoutButton/ui/LogoutButton';
-import { ProductsListWidget } from '../../../widgets/productsList/ui/ProductsListWidget';
+import { LogoutButton } from '../../../features/auth/logout-button/ui/logout-button';
+import { ProductsListWidget } from '../../../widgets/products-list/ui/products-list-widget';
 
 export default function ProductsPage() {
   return (

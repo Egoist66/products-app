@@ -1,10 +1,10 @@
 import {lazy} from 'react';
-import {AuthGuard} from '../../processes/authGuard/ui/AuthGuard';
+import {AuthGuard} from '../../processes/auth-guard/ui/auth-guard';
 import {Navigate, Route, Routes} from 'react-router';
 
 
-const LazyLoginPage = lazy(() => import ('../../pages/login/ui/LoginPage'));
-const LazyProductsPage = lazy(() => import ('../../pages/products/ui/ProductsPage'));
+const LazyLoginPage = lazy(() => import ('../../pages/login/ui/login-page'));
+const LazyProductsPage = lazy(() => import ('../../pages/products/ui/products-page'));
 
 
 const routes = [
