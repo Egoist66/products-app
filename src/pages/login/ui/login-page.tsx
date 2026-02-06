@@ -4,26 +4,39 @@
 // - валидацию, что логин === "admin"
 // - переход на /products по кнопке.
 
-import {PasswordInput} from '@mantine/core';
-import {LoginButton} from '../../../features/auth/login-button/ui/login-button';
+import {useEffect} from 'react';
+import {useNavigate} from 'react-router';
+import {LoginForm} from '../../../features/auth/login-form/ui/login-form';
+import {observer} from 'mobx-react-lite';
+import {useAuth} from '../../../shared/lib/auth/use-auth';
+import {Flex} from '@mantine/core';
 
-export default function LoginPage() {
+const LoginPage = observer(() => {
+    const {isAuthenticated} = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/products');
+        }
+    }, [isAuthenticated, navigate]);
+
     return (
-        <main>
-            <h1>Login page stub</h1>
-
-            {/* Здесь позже сделаете управляемый инпут логина */}
-            <div>
-                <label>
-                    Login (stub):
-                    <PasswordInput label="Input label" description="Input description" placeholder="Input placeholder"/>
-                </label>
-            </div>
-
-            {/* Кнопка, куда позже добавите проверку логина и навигацию */}
-            <div>
-                <LoginButton/>
-            </div>
-        </main>
+        <section className='login-page'>
+            <Flex maw='900px'
+                style={
+                    {
+                        margin: '0 auto',
+                        padding: '0 16px'
+                    }
+                }
+                mih='100vh'
+                justify='center'
+                direction='column'>
+                <LoginForm/>
+            </Flex>
+        </section>
     );
-};
+});
+
+export default LoginPage;

@@ -2,6 +2,6 @@
 // Логику проверки логина "admin" и перехода на /products реализуете сами.
 
 export const LoginButton = () => {
-  return <button type="button">Login stub</button>;
+  return <button type="submit">Login stub</button>;
 };
 

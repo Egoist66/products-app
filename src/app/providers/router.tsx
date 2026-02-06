@@ -10,7 +10,11 @@ const LazyProductsPage = lazy(() => import ('../../pages/products/ui/products-pa
 const routes = [
     {
         path: '/',
-        element: <LazyProductsPage/>}, {
+        element: (
+            <AuthGuard>
+                <LazyProductsPage />
+            </AuthGuard>
+        )}, {
         path: '/login',
         element: <LazyLoginPage/>}, {
         path: '/products',
