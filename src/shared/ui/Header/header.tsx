@@ -4,9 +4,9 @@ import {observer} from "mobx-react-lite";
 import {useAuth} from "../../lib/auth/use-auth";
 
 export const Header = observer(() => {
-    const auth = useAuth();
+    const {handleLogOut, isAuthenticated} = useAuth();
 
-    return auth.isAuthenticated && (
+    return isAuthenticated && (
         <header className='header'>
             <Container size='xl'>
                 <nav>
@@ -20,9 +20,7 @@ export const Header = observer(() => {
 
 
                                 <li>
-                                    <Button onClick={
-                                        auth.logout
-                                    }>
+                                    <Button onClick={handleLogOut}>
                                         Logout
                                     </Button>
                                 </li>

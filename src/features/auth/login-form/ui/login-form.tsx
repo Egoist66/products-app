@@ -6,7 +6,7 @@ import {
     TextInput,
     Title
 } from '@mantine/core';
-import type {FC}
+import {useEffect, type FC}
 from 'react';
 import {observer} from 'mobx-react-lite';
 import {useAuth} from '../../../../shared/lib/auth/use-auth';
@@ -21,7 +21,15 @@ export const LoginForm: FC = observer(() => {
         handleLogin,
         handleName,
         handlePassword,
+        handleResetUserInputAndMessage
     } = useAuth()
+
+
+    useEffect(() => {
+        return () => {
+            handleResetUserInputAndMessage()
+        }
+    }, [])
     return (
         <form onSubmit={handleLogin}>
 

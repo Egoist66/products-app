@@ -12,6 +12,7 @@ export interface IAuthStore {
     logout: () => Promise<void>;
     handleName: (e: ChangeEvent<HTMLInputElement>) => void;
     handlePassword: (e: ChangeEvent<HTMLInputElement>) => void;
+    authMe: (isUserExist: () => boolean, getUserId: () => string) => Promise<void>
 }
 
 export type AuthDrivers = 'google' | 'instagram' | 'yandex' | 'default'

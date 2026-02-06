@@ -19,6 +19,8 @@ const LoginPage = observer(() => {
         if (isAuthenticated) {
             navigate('/products');
         }
+
+        document.title = 'Login'
     }, [isAuthenticated, navigate]);
 
     return (

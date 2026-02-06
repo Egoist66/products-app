@@ -1,6 +1,6 @@
 import {authStore} from '../../../entities/auth/model/auth-store';
 import {useLS} from '../service/use-ls';
-import type { FormEvent } from 'react';
+import { useEffect, type FormEvent } from 'react';
 
 // Фасад-хук над mobx-стором авторизации.
 // Компоненты получают доступ через useAuth, а логику и состояние
@@ -16,13 +16,22 @@ export const useAuth = () => {
         isLoading,
         login,
         logout,
+        authMe,
+        handleResetUserInputAndMessage,
         name,
         password
     } = authStore
-    const {set} = useLS()
+    const {set, getSync, exist, remove} = useLS()
 
     const setUserData =  async () => {
-        await set<{name: string, userId: string}>('user', {name, userId: crypto.randomUUID()})
+        await set<{name: string}>('user', {name})
+        await set<{userId: string}>('userId', {userId: crypto.randomUUID()})
+
+    }
+
+    const removeUserData = () => {
+        remove('user')
+        remove('userId')
     }
 
 
@@ -30,6 +39,22 @@ export const useAuth = () => {
         await login(e, 'default')
         await setUserData()
     }
+
+    const handleLogOut = async () => {
+        await logout(removeUserData)
+        
+    }
+
+    const AmIAuth = async() => {
+        authMe(() => exist('user'), () => getSync('userId'))
+    }
+
+
+    useEffect(() => {
+        (async () => {
+            await AmIAuth()
+        })()
+    }, [])
 
  
     return {
@@ -40,10 +65,13 @@ export const useAuth = () => {
         isError,
         isLoading,
         handleLogin,
+        handleLogOut,
         logout,
         name,
         password,
-        setUserData
+        AmIAuth,
+        setUserData,
+        handleResetUserInputAndMessage
 
     }
 }

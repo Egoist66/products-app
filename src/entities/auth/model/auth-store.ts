@@ -25,6 +25,12 @@ class AuthStore implements IAuthStore {
         this.password = e.currentTarget.value;
     };
 
+    handleResetUserInputAndMessage = () => {
+        this.name = ''
+        this.password = ''
+        this.authMessage = ''
+    }
+
     login = async (e : FormEvent<HTMLFormElement>, driver : AuthDrivers = 'default', afterLoginHandler?: () => void) => {
 
         e.preventDefault();
@@ -76,8 +82,20 @@ class AuthStore implements IAuthStore {
     }
 
 
-    logout = async () => {
+
+    logout = async (afterLogOutHandler?: () => void) => {
         this.isAuthenticated = false;
+        if(afterLogOutHandler){
+            afterLogOutHandler()
+        }
+    }
+
+    authMe = async (isUserExist: () => boolean, getUserId: () => string) => {
+        if(isUserExist()){
+           if(getUserId()){
+            this.isAuthenticated = true
+           }
+        }
     }
 }
 
