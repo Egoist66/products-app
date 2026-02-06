@@ -23,7 +23,8 @@ const LoginPage = observer(() => {
 
     return (
         <section className='login-page'>
-            <Flex maw='900px'
+        
+            <Flex gap={20} maw='600px'
                 style={
                     {
                         margin: '0 auto',

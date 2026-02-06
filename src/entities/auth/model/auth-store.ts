@@ -1,13 +1,15 @@
-import {makeAutoObservable} from 'mobx';
-import type {IAuthStore}
+import { makeAutoObservable} from 'mobx';
+import type {AuthDrivers, IAuthStore}
 from './types';
 import {delay} from '../../../shared/lib/delay';
-import type {ChangeEvent, SubmitEvent}
-from 'react';
+import type {ChangeEvent, FormEvent} from 'react';
 
 class AuthStore implements IAuthStore {
     isAuthenticated : boolean = false;
+    isError : boolean = false;
+    driver : 'google' | 'instagram' | 'yandex' | 'default' = 'default';
     isLoading : boolean = false;
+    authMessage : string = '';
     name : string = '';
     password : string = '';
 
@@ -23,25 +25,58 @@ class AuthStore implements IAuthStore {
         this.password = e.currentTarget.value;
     };
 
-    login = async (e : SubmitEvent) => {
-        e.preventDefault()
+    login = async (e : FormEvent<HTMLFormElement>, driver : AuthDrivers = 'default', afterLoginHandler?: () => void) => {
+
+        e.preventDefault();
 
         this.isLoading = true;
-        await delay(1000)
-        try {
-            if (this.name === 'admin' && this.password === 'admin') {
-                this.isAuthenticated = true;
+        this.isError = false;
+        this.authMessage = ''
 
-            } else {
-                this.isAuthenticated = false;
 
-            }
-        } finally {
-            this.isLoading = false;
+        await delay(1000);
+
+        switch (driver) {
+            case 'default':
+
+                try {
+                    
+
+
+                    if (this.name === 'admin' && this.password === 'admin') {
+                        this.authMessage = 'You are logged in!';
+
+
+                        await delay(500);
+
+                        this.isAuthenticated = true;
+                        if(afterLoginHandler){
+                            afterLoginHandler()
+                        }
+
+
+                    } else {
+                        this.isAuthenticated = false;
+                        this.authMessage = 'Nickname or Password are incorrect! Try again';
+                        this.isError = true;
+
+                    }
+                } finally {
+                    this.isLoading = false;
+
+                }
+
+                break;
+
+            default:
+                throw new Error('Unknown Auth drivers!');
+
         }
+
     }
 
-    logout = async () => { // TODO: при необходимости чистить токены/данные пользователя
+
+    logout = async () => {
         this.isAuthenticated = false;
     }
 }
