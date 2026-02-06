@@ -9,7 +9,7 @@ import {
 import {useEffect, type FC}
 from 'react';
 import {observer} from 'mobx-react-lite';
-import {useAuth} from '../../../../shared/lib/auth/use-auth';
+import {useAuth} from '../../../../shared/hooks/auth/use-auth';
 
 export const LoginForm: FC = observer(() => {
     const {

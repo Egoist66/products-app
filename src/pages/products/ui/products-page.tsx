@@ -8,7 +8,7 @@
 import { useEffect } from 'react';
 import { ProductsListWidget } from '../../../widgets/products-list/ui/products-list-widget';
 import { getProductsApi } from '../../../shared/api/config';
-import { useAuth } from '../../../shared/lib/auth/use-auth';
+import { useAuth } from '../../../shared/hooks/auth/use-auth';
 
 export default function ProductsPage() {
 

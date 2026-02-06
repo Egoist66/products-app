@@ -4,7 +4,7 @@
 import type {ReactNode} from 'react';
 import {Navigate} from 'react-router';
 import {observer} from 'mobx-react-lite';
-import {useAuth} from '../../../shared/lib/auth/use-auth';
+import {useAuth} from '../../../shared/hooks/auth/use-auth';
 
 export const AuthGuard = observer(({children}: { children: ReactNode }) => {
     const {isAuthenticated} = useAuth();

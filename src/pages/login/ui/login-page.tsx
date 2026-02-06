@@ -8,7 +8,7 @@ import {useEffect} from 'react';
 import {useNavigate} from 'react-router';
 import {LoginForm} from '../../../features/auth/login-form/ui/login-form';
 import {observer} from 'mobx-react-lite';
-import {useAuth} from '../../../shared/lib/auth/use-auth';
+import {useAuth} from '../../../shared/hooks/auth/use-auth';
 import {Flex} from '@mantine/core';
 
 const LoginPage = observer(() => {

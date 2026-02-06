@@ -1,7 +1,7 @@
 import { makeAutoObservable} from 'mobx';
 import type {AuthDrivers, IAuthStore}
 from './types';
-import {delay} from '../../../shared/lib/delay';
+import {delay} from '../../../shared/utils/delay';
 import type {ChangeEvent, FormEvent} from 'react';
 
 class AuthStore implements IAuthStore {
