@@ -1,9 +1,5 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
 
-/**
- * Базовый класс для API клиентов.
- * Предоставляет общую конфигурацию axios и методы для HTTP запросов.
- */
 export class BaseApi {
     protected readonly client: AxiosInstance;
 
@@ -20,10 +16,7 @@ export class BaseApi {
         this.setupInterceptors();
     }
 
-    /**
-     * Настройка interceptors для запросов и ответов.
-     * Можно добавить обработку ошибок, токенов и т.д.
-     */
+  
     private setupInterceptors(): void {
         // Request interceptor
         this.client.interceptors.request.use(
@@ -53,41 +46,28 @@ export class BaseApi {
         );
     }
 
-    /**
-     * GET запрос
-     */
+ 
     protected async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
         const response = await this.client.get<T>(url, config);
         return response.data;
     }
 
-    /**
-     * POST запрос
-     */
     protected async post<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
         const response = await this.client.post<T>(url, data, config);
         return response.data;
     }
 
-    /**
-     * PUT запрос
-     */
     protected async put<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
         const response = await this.client.put<T>(url, data, config);
         return response.data;
     }
 
-    /**
-     * PATCH запрос
-     */
+   
     protected async patch<T>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T> {
         const response = await this.client.patch<T>(url, data, config);
         return response.data;
     }
 
-    /**
-     * DELETE запрос
-     */
     protected async delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
         const response = await this.client.delete<T>(url, config);
         return response.data;

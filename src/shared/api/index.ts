@@ -4,4 +4,5 @@
  */
 
 export { BaseApi } from './base-api';
-export { ProductsApi, type Product, type ProductsResponse, type ProductQueryParams } from './products-api';
+export { ProductsApi } from './products/products-api';
+export type { Product, ProductsResponse, ProductQueryParams } from './products/types';

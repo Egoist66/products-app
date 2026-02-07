@@ -1,10 +1,10 @@
-import {authStore} from '../../../entities/auth/model/auth-store';
+import {authStore} from '../../../features/auth/model/auth-store';
 import {useLS} from '../service/use-ls';
 import { useEffect, type FormEvent } from 'react';
 
 // Фасад-хук над mobx-стором авторизации.
 // Компоненты получают доступ через useAuth, а логику и состояние
-// храним в entities/auth.
+// храним в features/auth/model.
 export const useAuth = () => {
 
     const {
@@ -50,11 +50,7 @@ export const useAuth = () => {
     }
 
 
-    useEffect(() => {
-        (async () => {
-            await AmIAuth()
-        })()
-    }, [])
+  
 
  
     return {
