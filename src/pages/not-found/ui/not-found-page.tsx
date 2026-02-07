@@ -14,7 +14,7 @@ export default function NotFoundPage() {
         direction="column"
         align="center"
         justify="center"
-        mih="100vh"
+        mih="50vh"
         maw="600px"
         style={{ margin: '0 auto', padding: '0 16px' }}
       >

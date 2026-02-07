@@ -1,5 +1,4 @@
-// Виджет со списком продуктов (заглушка).
-// Здесь позже соберёте вместе ProductCard, сортировку, пагинацию, поиск и модалки.
+
 
 import { Container, Flex } from "@mantine/core";
 import { useProducts } from "../../../shared/hooks/products/use-products";
