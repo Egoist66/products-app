@@ -1,6 +1,6 @@
 import {authStore} from '../../../features/auth/model/auth-store';
 import {useLS} from '../service/use-ls';
-import { useEffect, type FormEvent } from 'react';
+import {type FormEvent } from 'react';
 
 // Фасад-хук над mobx-стором авторизации.
 // Компоненты получают доступ через useAuth, а логику и состояние
