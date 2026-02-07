@@ -5,6 +5,9 @@ header.header {
     padding-bottom: 16px;
     background-color: ghostwhite;
     box-shadow: 10px -5px 7px 5px silver;
+    position: sticky;
+    top: 0;
+    z-index: 22;
 }
 
 section:not(.login-page) {

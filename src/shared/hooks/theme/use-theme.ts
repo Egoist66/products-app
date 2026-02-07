@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { useLS } from "../service/use-ls";
 
 export const useTheme = () => {
@@ -13,7 +13,11 @@ export const useTheme = () => {
     useEffect(() => {
         document.documentElement.setAttribute('data-mantine-color-scheme', theme);
         set<'light' | 'dark'>('theme', theme)
-    }, [theme, set]);
+
+        
+    }, [theme, getSync, set]);
+
+  
 
     return {
         theme,

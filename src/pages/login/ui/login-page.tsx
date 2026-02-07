@@ -10,10 +10,13 @@ import {LoginForm} from '../../../features/auth/login-form/ui/login-form';
 import {observer} from 'mobx-react-lite';
 import {useAuth} from '../../../shared/hooks/auth/use-auth';
 import {Flex} from '@mantine/core';
+import { useTheme } from '../../../shared/hooks/theme/use-theme';
 
 const LoginPage = observer(() => {
     const {isAuthenticated} = useAuth();
     const navigate = useNavigate();
+    useTheme()
+
 
     useEffect(() => {
         if (isAuthenticated) {
