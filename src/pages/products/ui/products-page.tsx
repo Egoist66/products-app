@@ -15,25 +15,38 @@ import { ProductsPagination } from "../../../features/products/pagination/ui/pro
 import { useProducts } from "../../../shared/hooks/products/use-products";
 import { usePagination } from "../../../shared/hooks/products/use-paginations";
 
+import { ActionIcon } from "@mantine/core";
+import { IconAdjustments } from "@tabler/icons-react";
+import { EditProductModal } from "../../../features/products/edit-product-modal/ui/edit-product-modal";
 export default function ProductsPage() {
   const { deferredSearchTerm, handleSearchTermChange, searchTerm } =
     useSearchProducts();
   const { handleSortChange, sort } = useSortProducts();
-    const { products } = useProducts();
-    const {pageProducts, setPage, totalPages, page} = usePagination(products)
-
+  const { products } = useProducts();
+  const { pageProducts, setPage, totalPages, page } = usePagination(products);
 
   return (
     <section className="products-page">
       <Container size="xl">
-        <Flex mb={50} align={"center"} justify={"space-between"} wrap={'wrap'} gap={20}>
+        <Flex
+          mb={50}
+          align={"center"}
+          justify={"space-between"}
+          wrap={"wrap"}
+          gap={20}
+        >
           <ProductsSearch
             searchValue={searchTerm}
             onSearchTermChange={handleSearchTermChange}
           />
-          <Button onClick={handleSortChange}>
-            {sort === "asc" ? "Sort by price to low" : "Sort by price to high"}
-          </Button>
+          <Flex align={'center'} gap={20}>
+              <ActionIcon title={sort === 'asc' ? 'switch to descending order' : 'switch to ascending order'} size={'xl'} onClick={handleSortChange}>
+                <IconAdjustments />
+              </ActionIcon>
+
+            <Button>Add new Product</Button>
+            <EditProductModal />
+          </Flex>
         </Flex>
       </Container>
       <Suspense fallback={<div>Loading...</div>}>
@@ -41,7 +54,6 @@ export default function ProductsPage() {
           searchValue={deferredSearchTerm}
           sort={sort}
           products={pageProducts}
-         
         />
       </Suspense>
 

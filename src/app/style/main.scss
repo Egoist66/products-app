@@ -32,3 +32,7 @@ section:not(.login-page) {
     justify-content: center;
     align-items: center;
 }
+
+section.mantine-Modal-content {
+    padding: 0px;
+}
