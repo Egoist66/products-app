@@ -14,6 +14,7 @@ export class ProductsApi extends BaseApi {
 
   
     async getProductById(id: string): Promise<Product> {
+        await delay(1000)
         return this.get<Product>(`/products/${id}`);
     }
 

@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router';
 const LazyLoginPage = lazy(() => import('../../pages/login/ui/login-page'));
 const LazyProductsPage = lazy(() => import('../../pages/products/ui/products-page'));
 const LazyNotFoundPage = lazy(() => import('../../pages/not-found/ui/not-found-page'));
+const LazyProductPage = lazy(() => import('../../pages/product/ui/product-page'));
 
 const routes = [
   {
@@ -20,6 +21,12 @@ const routes = [
     path: '/products',
     element: (
         <LazyProductsPage />
+    ),
+  },
+  {
+    path: '/product/:category/:id',
+    element: (
+        <LazyProductPage />
     ),
   },
   {

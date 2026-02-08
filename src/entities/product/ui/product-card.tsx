@@ -45,11 +45,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             </Badge>
           </Group>
 
-          {product.description && (
-            <Text size="xs" c="dimmed" lineClamp={2}>
-              {product.description}
-            </Text>
-          )}
+        
 
           {product.category && (
             <Text size="xs" c="dimmed" tt="uppercase">

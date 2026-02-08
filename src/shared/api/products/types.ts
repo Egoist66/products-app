@@ -5,6 +5,10 @@ export interface Product {
     price: number;
     image?: string;
     category?:string;
+    rating?: {
+        rate: number;
+        count: number;
+    }
 }
 
 export interface ProductsResponse {

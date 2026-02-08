@@ -1,0 +1,10 @@
+@media(max-width: 1024px){
+    div.product-wrapper{
+        flex-direction: column !important;
+    }
+
+    img.product-image{
+        width: 50% !important;
+        margin: 0 auto;
+    }
+}

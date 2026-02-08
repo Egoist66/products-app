@@ -25,7 +25,7 @@ export default function NotFoundPage() {
          Page not Found 😔
         </Text>
         <Button c={'white'} component={Link} to="/" variant="filled" size="md">
-          На главную
+          Go to Home
         </Button>
       </Flex>
     </section>

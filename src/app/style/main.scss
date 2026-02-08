@@ -1,4 +1,5 @@
 @import './reset.scss';
+@import './media.scss';
 
 header.header {
     padding-top: 16px;
@@ -17,6 +18,7 @@ section:not(.login-page) {
 .product-card-wrapper {
     justify-content: space-between;
 }
+
 
 .loader-wrapper {
     position: absolute;
