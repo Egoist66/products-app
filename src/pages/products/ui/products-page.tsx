@@ -5,7 +5,7 @@
 // - пагинацию
 // - поиск
 // - открытие модального окна добавления/редактирования.
-import { Button, Container, Flex } from "@mantine/core";
+import { Container, Flex } from "@mantine/core";
 import { ProductsSearch } from "../../../features/products/search/ui/products-search";
 import { useSearchProducts } from "../../../shared/hooks/products/use-search-products";
 import { useSortProducts } from "../../../shared/hooks/products/use-sort-products";
@@ -17,7 +17,7 @@ import { usePagination } from "../../../shared/hooks/products/use-paginations";
 
 import { ActionIcon } from "@mantine/core";
 import { IconAdjustments } from "@tabler/icons-react";
-import { EditProductModal } from "../../../features/products/edit-product-modal/ui/edit-product-modal";
+import { ProductModal } from "../../../features/products/product-modal/ui/product-modal";
 export default function ProductsPage() {
   const { deferredSearchTerm, handleSearchTermChange, searchTerm } =
     useSearchProducts();
@@ -39,13 +39,21 @@ export default function ProductsPage() {
             searchValue={searchTerm}
             onSearchTermChange={handleSearchTermChange}
           />
-          <Flex align={'center'} gap={20}>
-              <ActionIcon title={sort === 'asc' ? 'switch to descending order' : 'switch to ascending order'} size={'xl'} onClick={handleSortChange}>
-                <IconAdjustments />
-              </ActionIcon>
+          <Flex align={"center"} gap={20}>
+            <ActionIcon
+              title={
+                sort === "asc"
+                  ? "switch to descending order"
+                  : "switch to ascending order"
+              }
+              size={"xl"}
+              onClick={handleSortChange}
+            >
+              <IconAdjustments />
+            </ActionIcon>
 
-            <Button>Add new Product</Button>
-            <EditProductModal />
+            <ProductModal mode="edit" />
+            <ProductModal mode="add" />
           </Flex>
         </Flex>
       </Container>
